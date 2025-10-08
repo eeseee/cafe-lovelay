@@ -29,43 +29,43 @@ export default function ZoomButton({
             onClick={() => setIsZoomed(!isZoomed)}
             className="px-3 py-1 text-[#5F5F5F] flex justify-center border rounded-full"
         >
-            <span>zoom </span>
-                <div className="relative block whitespace-nowrap overflow-hidden w-[30px]">
-                    <div className="flex justify-center">
-                        {LABEL[0].split("").map((l, i) => (
-                            <motion.span 
-                                key={i}
-                                variants={animTop}
-                                animate={isZoomed ? "after" : "before"}
-                                transition={{
-                                    duration: DURATION,
-                                    ease: "easeInOut",
-                                    delay: STAGGER*i
-                                }}
-                                className="inline-block"
-                            >
-                                {l}
-                            </motion.span>
-                        ))}
-                    </div>
-                    <div className="absolute inset-0 flex justify-end">
-                        {LABEL[1].split("").map((l, i) => (
-                            <motion.span 
-                                key={i}
-                                variants={animBot}
-                                animate={isZoomed ? "after": "before"}
-                                transition={{
-                                    duration: DURATION,
-                                    ease: "easeInOut",
-                                    delay: STAGGER*i
-                                }}
-                                className="inline-block"
-                            >
-                                {l}
-                            </motion.span>
-                        ))}
-                    </div>
-                </div>
+            <span className={`${isZoomed ? ('pr-1') : ''}`}>zoom</span>
+            <span className="inline-grid whitespace-nowrap overflow-hidden">
+                <span className="row-start-1 col-start-1">
+                    {LABEL[0].split("").map((l, i) => (
+                        <motion.span 
+                            key={i}
+                            variants={animTop}
+                            animate={isZoomed ? "after" : "before"}
+                            transition={{
+                                duration: DURATION,
+                                ease: "easeInOut",
+                                delay: STAGGER*i
+                            }}
+                            className="inline-block"
+                        >
+                            {l}
+                        </motion.span>
+                    ))}
+                </span>
+                <span className="row-start-1 col-start-1">
+                    {LABEL[1].split("").map((l, i) => (
+                        <motion.span 
+                            key={i}
+                            variants={animBot}
+                            animate={isZoomed ? "after": "before"}
+                            transition={{
+                                duration: DURATION,
+                                ease: "easeInOut",
+                                delay: STAGGER*i
+                            }}
+                            className="inline-block"
+                        >
+                            {l}
+                        </motion.span>
+                    ))}
+                </span>
+            </span>
         </motion.button>
     )
 }
